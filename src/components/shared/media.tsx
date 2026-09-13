@@ -25,6 +25,7 @@ export function Media({
         className={cn("absolute inset-0 size-full object-cover", className)}
         src={asset.video}
         poster={asset.src ?? undefined}
+        aria-label={asset.alt}
         autoPlay
         muted
         loop
