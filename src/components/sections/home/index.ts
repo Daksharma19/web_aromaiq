@@ -1,0 +1,7 @@
+export { Hero } from "./hero"
+export { SplitHero } from "./split-hero"
+export { PromoBlocks } from "./promo-blocks"
+export { Benefits } from "./benefits"
+export { Diffusers } from "./diffusers"
+export { Steps } from "./steps"
+export { Brands } from "./brands"

@@ -1,0 +1,6 @@
+export { AboutHero } from "./about-hero"
+export { Story } from "./story"
+export { Stats } from "./stats"
+export { Values } from "./values"
+export { Team } from "./team"
+export { AboutCta } from "./about-cta"
