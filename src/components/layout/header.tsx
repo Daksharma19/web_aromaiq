@@ -46,12 +46,13 @@ export function Header() {
         scrolled ? "px-3 pt-3 md:px-4 md:pt-4" : "px-0 pt-0"
       )}
     >
+      {/* Radius is half the pill height (not rounded-full) so it eases to square in step with the width. */}
       <div
         className={cn(
-          "relative mx-auto flex items-center border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "relative mx-auto flex items-center border backdrop-blur-md transition-[max-width,height,padding,border-radius,background-color,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
           scrolled
-            ? "h-16 max-w-6xl rounded-full border-white/50 bg-background/65 px-3 sm:px-5 shadow-lg shadow-black/5 backdrop-blur-md md:h-[4.5rem] md:px-8"
-            : "h-[4.5rem] max-w-full rounded-none border-transparent bg-background/40 px-3 sm:px-5 backdrop-blur-sm md:h-20 md:px-10"
+            ? "h-16 max-w-6xl rounded-[32px] border-white/50 bg-background/65 px-3 sm:px-5 shadow-lg shadow-black/5 md:h-[4.5rem] md:rounded-[36px] md:px-8"
+            : "h-[4.5rem] max-w-full rounded-none border-transparent bg-background/40 px-3 sm:px-5 md:h-20 md:px-10"
         )}
       >
         <div ref={brandRef} className="flex min-w-0 items-center gap-1 sm:gap-4">

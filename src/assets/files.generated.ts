@@ -3,30 +3,42 @@ import type { StaticImageData } from "next/image"
 
 import f0 from "./about/founder-ayush.png"
 import f1 from "./about/founder-daksh.png"
-import f2 from "./home/benefit-ingredients.jpg"
-import f3 from "./home/benefit-smart-control.jpg"
-import f4 from "./home/benefit-variety.jpg"
-import f5 from "./home/diffusers-room.jpg"
-import f6 from "./home/hero-poster.jpg"
-import f7 from "./home/promo-harvest.jpg"
-import f8 from "./home/promo-seasonal.jpg"
-import f9 from "./home/promo-whole-home.jpg"
-import f10 from "./home/space-cafe.png"
-import f11 from "./home/space-office.jpg"
-import f12 from "./home/split-hero.jpg"
+import f2 from "./about/gallery-customers.jpg"
+import f3 from "./about/gallery-expo.jpg"
+import f4 from "./about/gallery-planning.jpg"
+import f5 from "./home/benefit-ingredients.jpg"
+import f6 from "./home/benefit-smart-control.jpg"
+import f7 from "./home/benefit-variety.jpg"
+import f8 from "./home/diffusers-room.jpg"
+import f9 from "./home/hero-poster.jpg"
+import f10 from "./home/promo-harvest.jpg"
+import f11 from "./home/promo-seasonal.jpg"
+import f12 from "./home/promo-whole-home.jpg"
+import f13 from "./home/space-cafe.png"
+import f14 from "./home/space-office.jpg"
+import f15 from "./home/split-hero.jpg"
+import f16 from "./home/step-app.jpg"
+import f17 from "./home/step-choose.jpg"
+import f18 from "./home/step-fragrances.jpg"
 
 export const files: Record<string, StaticImageData> = {
   "about/founder-ayush": f0,
   "about/founder-daksh": f1,
-  "home/benefit-ingredients": f2,
-  "home/benefit-smart-control": f3,
-  "home/benefit-variety": f4,
-  "home/diffusers-room": f5,
-  "home/hero-poster": f6,
-  "home/promo-harvest": f7,
-  "home/promo-seasonal": f8,
-  "home/promo-whole-home": f9,
-  "home/space-cafe": f10,
-  "home/space-office": f11,
-  "home/split-hero": f12,
+  "about/gallery-customers": f2,
+  "about/gallery-expo": f3,
+  "about/gallery-planning": f4,
+  "home/benefit-ingredients": f5,
+  "home/benefit-smart-control": f6,
+  "home/benefit-variety": f7,
+  "home/diffusers-room": f8,
+  "home/hero-poster": f9,
+  "home/promo-harvest": f10,
+  "home/promo-seasonal": f11,
+  "home/promo-whole-home": f12,
+  "home/space-cafe": f13,
+  "home/space-office": f14,
+  "home/split-hero": f15,
+  "home/step-app": f16,
+  "home/step-choose": f17,
+  "home/step-fragrances": f18,
 }
