@@ -24,7 +24,8 @@ export function Media({
       <video
         className={cn("absolute inset-0 size-full object-cover", className)}
         src={asset.video}
-        poster={asset.src ?? undefined}
+        poster={typeof asset.src === "string" ? asset.src : asset.src?.src}
+        preload="metadata"
         aria-label={asset.alt}
         autoPlay
         muted
@@ -42,6 +43,7 @@ export function Media({
         fill
         sizes={sizes}
         preload={preload}
+        placeholder={typeof asset.src === "object" && asset.src.blurDataURL ? "blur" : "empty"}
         className={cn("object-cover", className)}
       />
     )

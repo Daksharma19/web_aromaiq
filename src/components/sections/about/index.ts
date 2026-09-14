@@ -1,4 +1,3 @@
-export { AboutHero } from "./about-hero"
 export { Manifesto } from "./manifesto"
 export { Journey } from "./journey"
 export { Moods } from "./moods"

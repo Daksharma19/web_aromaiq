@@ -21,6 +21,10 @@ const defaultBlobs: Blob[] = [
 /** Semicircle hanging from the top edge; everything outside it fades to the background. */
 const arcMask = "radial-gradient(ellipse 55% 100% at 50% 0%, #000 45%, transparent 100%)"
 
+/** Softer arc that also fades in from the top edge, so no seam shows against neighbouring sections. */
+const softMask =
+  "linear-gradient(to bottom, transparent 0%, #000 30%), radial-gradient(ellipse 62% 95% at 50% 10%, #000 20%, transparent 78%)"
+
 export const grainNoise =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
 
@@ -30,10 +34,13 @@ export const grainNoise =
 export function GrainGradient({
   children,
   blobs = defaultBlobs,
+  soft = false,
   className,
 }: {
   children: React.ReactNode
   blobs?: Blob[]
+  /** Feathered edges and slightly lighter color. */
+  soft?: boolean
   className?: string
 }) {
   return (
@@ -41,12 +48,16 @@ export function GrainGradient({
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[min(900px,75vw)] min-h-[420px] overflow-hidden"
-        style={{ maskImage: arcMask, WebkitMaskImage: arcMask }}
+        style={
+          soft
+            ? { maskImage: softMask, WebkitMaskImage: softMask, maskComposite: "intersect", WebkitMaskComposite: "source-in" }
+            : { maskImage: arcMask, WebkitMaskImage: arcMask }
+        }
       >
         {blobs.map((b, i) => (
           <div
             key={i}
-            className="absolute aspect-square rounded-full opacity-80 blur-[90px] md:blur-[140px]"
+            className={cn("absolute aspect-square rounded-full blur-[90px] md:blur-[140px]", soft ? "opacity-60" : "opacity-80")}
             style={{
               left: `${b.x}%`,
               top: `${b.y}%`,
@@ -59,11 +70,11 @@ export function GrainGradient({
         ))}
         {/* grain: overlay blend keeps white areas clean and speckles the colored ones */}
         <div
-          className="absolute inset-0 opacity-70 mix-blend-overlay"
+          className={cn("absolute inset-0 mix-blend-overlay", soft ? "opacity-50" : "opacity-70")}
           style={{ backgroundImage: grainNoise, backgroundSize: "220px 220px" }}
         />
         <div
-          className="absolute inset-0 opacity-[0.12] mix-blend-multiply"
+          className={cn("absolute inset-0 mix-blend-multiply", soft ? "opacity-[0.04]" : "opacity-[0.12]")}
           style={{ backgroundImage: grainNoise, backgroundSize: "220px 220px" }}
         />
       </div>

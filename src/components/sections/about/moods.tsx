@@ -1,11 +1,14 @@
 "use client"
 
 import * as React from "react"
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react"
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react"
 import { moods } from "@/content/about"
 import { Container } from "@/components/shared/container"
-import { grainNoise } from "@/components/shared/grain-gradient"
+import dynamic from "next/dynamic"
 import { cn } from "@/lib/utils"
+
+// WebGL (ogl) is client-only and heavy: keep it out of the initial bundle.
+const GradientWaves = dynamic(() => import("@/components/shared/gradient-waves"), { ssr: false })
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -20,21 +23,35 @@ export function Moods() {
   })
 
   const current = moods.items[active]
+  const reduce = useReducedMotion()
 
   return (
     <section ref={ref} style={{ height: `${moods.items.length * 90}svh` }} className="relative">
-      <div className="sticky top-0 flex h-svh items-center overflow-hidden">
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -z-10 aspect-square w-[min(900px,120vw)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]"
-          animate={{ background: `radial-gradient(circle, ${current.color} 0%, ${current.color}00 65%)` }}
-          transition={{ duration: 0.9, ease }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 opacity-40 mix-blend-overlay"
-          style={{ backgroundImage: grainNoise, backgroundSize: "220px 220px" }}
-        />
+      <div className="sticky top-0 isolate flex h-svh items-center overflow-hidden">
+        <div aria-hidden className="absolute inset-0 -z-10">
+          <GradientWaves
+            horizonColor={current.waves.horizon}
+            waveColor={current.waves.wave}
+            crestColor={current.waves.crest}
+            speed={reduce ? 0 : 0.4}
+            amplitude={2.5}
+            waveScale={0.6}
+            waveRatio={0.9}
+            swell={35}
+            turbulence={20}
+            tilt={1.11}
+            zoom={1}
+            height={5.5}
+            fogDepth={15}
+            detail="medium"
+            brightness={1}
+            opacity={1}
+            mouseInteraction={!reduce}
+            parallaxStrength={0.5}
+            grain={!reduce}
+            grainIntensity={0.05}
+          />
+        </div>
         <Container className="grid items-center gap-10 pt-16 md:grid-cols-2 md:gap-16">
           <div>
             <p className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">{moods.eyebrow}</p>

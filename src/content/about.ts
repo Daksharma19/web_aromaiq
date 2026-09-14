@@ -1,13 +1,7 @@
 import type { Asset } from "@/types/content"
-
+import ayushPortrait from "../../public/assets/ayush.png"
+import dakshPortrait from "../../public/assets/daksh.png"
 // About Us page copy and media. Sourced from aromaiq.in/our-story.
-
-export const aboutHero = {
-  eyebrow: "Our story",
-  title: "Built from a bedroom. Aimed at every room.",
-  body: "AromaIQ is scent intelligence for modern living — a smart diffuser that reads the room, learns how you feel and blends the right aroma on its own.",
-  asset: { src: "/assets/hero.jpg", video: null, alt: "Golden fragrance particles drifting through warm light", tone: "from-[#ead9c6] to-[#9b7456]" } as Asset,
-}
 
 export const manifesto = {
   eyebrow: "The question",
@@ -47,10 +41,10 @@ export const moods = {
   body: "Scroll through a day with AromaIQ. Each chamber holds a different oil, and the engine blends them in real time.",
   chambers: ["Citrus", "Peppermint", "Bergamot", "Deep woods"],
   items: [
-    { time: "07:00", mood: "Morning", body: "Bright citrus to wake the room up.", mix: [80, 15, 5, 0], color: "#ffc27a" },
-    { time: "14:00", mood: "Focus", body: "Cool peppermint for long stretches of deep work.", mix: [15, 70, 15, 0], color: "#9fd8c4" },
-    { time: "18:00", mood: "Unwind", body: "Bergamot and peppermint when stress runs high.", mix: [5, 30, 65, 0], color: "#f7a8d8" },
-    { time: "23:00", mood: "Sleep", body: "Deep woods to slow everything down.", mix: [0, 0, 20, 80], color: "#b99b7e" },
+    { time: "07:00", mood: "Morning", body: "Bright citrus to wake the room up.", mix: [80, 15, 5, 0], color: "#ffc27a", waves: { horizon: "#ff7a2f", wave: "#ffc27a", crest: "#fff4e0" } },
+    { time: "14:00", mood: "Focus", body: "Cool peppermint for long stretches of deep work.", mix: [15, 70, 15, 0], color: "#9fd8c4", waves: { horizon: "#1f8a7a", wave: "#9fd8c4", crest: "#f0fff9" } },
+    { time: "18:00", mood: "Unwind", body: "Bergamot and peppermint when stress runs high.", mix: [5, 30, 65, 0], color: "#f7a8d8", waves: { horizon: "#5227ff", wave: "#ff9ffc", crest: "#ffffff" } },
+    { time: "23:00", mood: "Sleep", body: "Deep woods to slow everything down.", mix: [0, 0, 20, 80], color: "#b99b7e", waves: { horizon: "#3a2a1f", wave: "#b99b7e", crest: "#f3e6d8" } },
   ],
 }
 
@@ -85,27 +79,32 @@ export const values = {
 export const team = {
   eyebrow: "The team",
   title: "Two builders. One obsession.",
-  members: [
+  founders: [
     {
       name: "Ayush Raj",
       role: "Co-founder & CEO",
       bio: "Visionary leader driving innovation in smart wellness technology.",
-      asset: { src: null, alt: "Ayush Raj", tone: "from-[#efe6dc] to-[#bfa68a]" } as Asset,
+      frame: "bg-gradient-to-br from-[#e6cfa4] to-[#b99467]",
+      asset: { src: ayushPortrait, alt: "Portrait of Ayush Raj", tone: "from-[#efe6dc] to-[#bfa68a]" } as Asset,
     },
     {
       name: "Daksh Sharma",
       role: "Co-founder & CTO",
       bio: "Technical mastermind crafting intelligent aroma experiences.",
-      asset: { src: null, alt: "Daksh Sharma", tone: "from-[#e4e8ec] to-[#93a3b1]" } as Asset,
+      frame: "bg-gradient-to-br from-[#dce4ec] to-[#a6b6c6]",
+      asset: { src: dakshPortrait, alt: "Portrait of Daksh Sharma", tone: "from-[#e4e8ec] to-[#93a3b1]" } as Asset,
     },
   ],
-  supporters: {
-    title: "Mentored & supported by",
-    items: [
-      { name: "Janam Mehta", detail: "Mentor, JSW Ventures" },
-      { name: "Our college", detail: "Early backing" },
-    ],
-  },
+  galleryEyebrow: "Obsessed in action",
+  gallery: [
+    { label: "Planning on board", asset: { src: null, alt: "Planning on the whiteboard", tone: "from-[#f1e4d6] to-[#c9a27e]" } as Asset },
+    { label: "Talking to customers", asset: { src: null, alt: "Talking to customers", tone: "from-[#e3ebe2] to-[#8fa58b]" } as Asset },
+    { label: "Expo showcase", asset: { src: null, alt: "Showcasing at an expo", tone: "from-[#e4e8ec] to-[#93a3b1]" } as Asset },
+    { label: "Late-night strategy", asset: { src: null, alt: "Founders in discussion", tone: "from-[#ecdfe4] to-[#b08494]" } as Asset },
+    { label: "Writing the engine", asset: { src: null, alt: "Code for the mood engine", tone: "from-[#e6e3ec] to-[#9b93b3]" } as Asset },
+    { label: "Mentor sessions", asset: { src: null, alt: "Meeting with a mentor", tone: "from-[#efe6dc] to-[#bfa68a]" } as Asset },
+    { label: "Building the team", asset: { src: null, alt: "Team huddle", tone: "from-[#e3ebe2] to-[#8fa58b]" } as Asset },
+  ],
 }
 
 export const aboutCta = {

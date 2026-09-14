@@ -12,7 +12,7 @@ export function Manifesto() {
   const words = manifesto.text.split(" ")
 
   return (
-    <Container as="section" className="py-24 md:py-40">
+    <Container as="section" className="pb-24 pt-32 md:pb-40 md:pt-48">
       <div ref={ref} className="mx-auto max-w-5xl">
         <p className="mb-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">{manifesto.eyebrow}</p>
         <p className="text-3xl font-light leading-[1.2] tracking-tight md:text-6xl">
