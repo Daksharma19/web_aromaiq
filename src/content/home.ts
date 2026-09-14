@@ -7,7 +7,7 @@ export const hero = {
   title: "Scent that sets the mood",
   body: "Discover warm, layered fragrances made for slower evenings at home.",
   cta: { label: "Explore the collection", href: "#collections" },
-  asset: { src: null, video: "/assets/hero.mp4", alt: "Hero", tone: "from-[#d9c4a8] to-[#8a6a4c]" } as Asset,
+  asset: { src: "/assets/hero.jpg", video: "/assets/hero.mp4", alt: "Golden fragrance particles drifting through warm light", tone: "from-[#d9c4a8] to-[#8a6a4c]" } as Asset,
 }
 
 export const splitHero = {

@@ -4,7 +4,31 @@ import type { LinkItem } from "@/types/content"
 
 export const siteConfig = {
   name: "AromaIQ",
-  description: "Smart diffusers and fragrances for every room.",
+  tagline: "Smart Home Fragrance",
+  description:
+    "AromaIQ smart diffusers and clean home fragrances. Schedule scents, control intensity from your phone and scent every room — flameless, app-controlled and made for home.",
+  /** Production origin. Set NEXT_PUBLIC_SITE_URL in your hosting environment. */
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://aromaiq.com").replace(/\/$/, ""),
+  locale: "en_US",
+  keywords: [
+    "smart diffuser",
+    "home fragrance",
+    "scent diffuser",
+    "app controlled diffuser",
+    "car diffuser",
+    "room fragrance",
+    "flameless home scent",
+    "AromaIQ",
+  ],
+  /** Brand color used for browser UI and the web app manifest. */
+  themeColor: "#ffffff",
+  /** e.g. "@aromaiq" — leave undefined until the account exists. */
+  twitterHandle: undefined as string | undefined,
+}
+
+/** Absolute URL for a site path, e.g. absoluteUrl("/about"). */
+export function absoluteUrl(path = "/") {
+  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`
 }
 
 export const mainNav: LinkItem[] = [
