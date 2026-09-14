@@ -1,5 +1,7 @@
 export { AboutHero } from "./about-hero"
-export { Story } from "./story"
+export { Manifesto } from "./manifesto"
+export { Journey } from "./journey"
+export { Moods } from "./moods"
 export { Stats } from "./stats"
 export { Values } from "./values"
 export { Team } from "./team"

@@ -3,10 +3,10 @@ import { GrainGradient } from "@/components/shared/grain-gradient"
 import { JsonLd } from "@/components/shared/json-ld"
 import { absoluteUrl, siteConfig } from "@/config/site"
 import { breadcrumbSchema, graph, organizationId, organizationSchema, websiteId } from "@/lib/structured-data"
-import { AboutCta, AboutHero, Stats, Story, Team, Values } from "@/components/sections/about"
+import { AboutCta, AboutHero, Journey, Manifesto, Moods, Stats, Team, Values } from "@/components/sections/about"
 
 const title = "About Us"
-const description = `Meet ${siteConfig.name}: the story, values and people behind our smart diffusers and clean home fragrances.`
+const description = `Meet ${siteConfig.name}: two college builders making scent intelligence for modern living — a mood-aware, 4-chamber smart diffuser made in India.`
 
 export const metadata: Metadata = {
   title,
@@ -39,7 +39,9 @@ export default function AboutPage() {
     <>
       <JsonLd data={jsonLd} />
       <AboutHero />
-      <Story />
+      <Manifesto />
+      <Journey />
+      <Moods />
       <Stats />
       <GrainGradient>
         <Values />

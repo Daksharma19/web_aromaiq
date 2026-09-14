@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     "AromaIQ smart diffusers and clean home fragrances. Schedule scents, control intensity from your phone and scent every room — flameless, app-controlled and made for home.",
   /** Production origin. Set NEXT_PUBLIC_SITE_URL in your hosting environment. */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://aromaiq.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://aromaiq.in").replace(/\/$/, ""),
   locale: "en_US",
   keywords: [
     "smart diffuser",
