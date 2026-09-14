@@ -3,17 +3,20 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { SearchIcon, ShoppingBagIcon, UserIcon } from "lucide-react"
 import { mainNav } from "@/config/site"
 import { MobileNav } from "@/components/layout/mobile-nav"
 import { Wordmark } from "@/components/shared/wordmark"
 import { cn } from "@/lib/utils"
 
 const SCROLL_THRESHOLD = 40
+/** Space between the wordmark and the nav links while the bar is expanded (lg:gap-12). */
+const NAV_GAP = 48
 
 export function Header() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = React.useState(false)
+  const brandRef = React.useRef<HTMLDivElement>(null)
+  const [navStart, setNavStart] = React.useState(0)
 
   React.useEffect(() => {
     const update = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -25,6 +28,17 @@ export function Header() {
     }
   }, [pathname])
 
+  // Where the nav sits in the expanded bar: just after the wordmark.
+  // Measured in the expanded state only, so the value doesn't shift while the bar animates.
+  React.useEffect(() => {
+    const brand = brandRef.current
+    if (!brand || scrolled) return
+    const measure = () => setNavStart(brand.offsetLeft + brand.offsetWidth + NAV_GAP)
+    const observer = new ResizeObserver(measure)
+    observer.observe(brand)
+    return () => observer.disconnect()
+  }, [scrolled])
+
   return (
     <header
       className={cn(
@@ -34,36 +48,35 @@ export function Header() {
     >
       <div
         className={cn(
-          "mx-auto flex items-center justify-between border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "relative mx-auto flex items-center border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
           scrolled
             ? "h-16 max-w-6xl rounded-full border-white/50 bg-background/65 px-3 sm:px-5 shadow-lg shadow-black/5 backdrop-blur-md md:h-[4.5rem] md:px-8"
             : "h-[4.5rem] max-w-full rounded-none border-transparent bg-background/40 px-3 sm:px-5 backdrop-blur-sm md:h-20 md:px-10"
         )}
       >
-        <div className="flex min-w-0 items-center gap-1 sm:gap-4 lg:gap-12">
+        <div ref={brandRef} className="flex min-w-0 items-center gap-1 sm:gap-4">
           <MobileNav />
           <Wordmark className="text-[1.375rem] sm:text-2xl md:text-[1.75rem]" />
-          <nav className="hidden items-center gap-9 lg:flex">
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className="relative text-base font-medium tracking-[-0.01em] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
         </div>
-        <div className="flex shrink-0 items-center sm:gap-1.5">
-          <button className="rounded-full p-2 hover:bg-foreground/5 sm:p-2.5" aria-label="Search"><SearchIcon className="size-[22px]" /></button>
-          <button className="hidden rounded-full p-2.5 hover:bg-foreground/5 min-[360px]:block" aria-label="Account"><UserIcon className="size-[22px]" /></button>
-          <button className="relative rounded-full p-2 hover:bg-foreground/5 sm:p-2.5" aria-label="Cart">
-            <ShoppingBagIcon className="size-[22px]" />
-            <span className="absolute right-0.5 top-0.5 grid size-[18px] sm:right-1 sm:top-1 place-items-center rounded-full bg-foreground text-[11px] font-medium text-background">0</span>
-          </button>
-        </div>
+        {/* Beside the wordmark at the top of the page; glides to the centre when the bar compresses. */}
+        <nav
+          style={{ left: scrolled ? "50%" : navStart }}
+          className={cn(
+            "absolute hidden items-center gap-9 transition-[left,translate] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:flex",
+            scrolled && "-translate-x-1/2"
+          )}
+        >
+          {mainNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
+              className="relative whitespace-nowrap text-base font-medium tracking-[-0.01em] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </header>
   )
