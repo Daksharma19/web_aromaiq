@@ -110,5 +110,5 @@ export const team = {
 export const aboutCta = {
   title: "Breathe differently.",
   body: "Designed and made in India. Say hello — we'd love to hear what your room should smell like.",
-  cta: { label: "Get in touch", href: "mailto:hello@aromaiq.com" },
+  cta: { label: "Get in touch", href: "mailto:aromaiqscents@gmail.com" },
 }
