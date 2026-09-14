@@ -20,18 +20,31 @@ export function Media({
   label?: boolean
 }) {
   if (asset.video) {
+    // The poster is a real (optimized, preloadable) image under the video, so it can be the LCP element.
     return (
-      <video
-        className={cn("absolute inset-0 size-full object-cover", className)}
-        src={asset.video}
-        poster={typeof asset.src === "string" ? asset.src : asset.src?.src}
-        preload="metadata"
-        aria-label={asset.alt}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      <>
+        {asset.src && (
+          <Image
+            src={asset.src}
+            alt=""
+            fill
+            sizes={sizes}
+            preload={preload}
+            fetchPriority={preload ? "high" : undefined}
+            className={cn("object-cover", className)}
+          />
+        )}
+        <video
+          className={cn("absolute inset-0 size-full object-cover", className)}
+          src={asset.video}
+          aria-label={asset.alt}
+          preload="metadata"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </>
     )
   }
 

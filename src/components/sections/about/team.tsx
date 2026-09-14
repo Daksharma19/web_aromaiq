@@ -23,11 +23,10 @@ export function Team() {
     <Container as="section" className="py-20 md:py-32">
       <SectionHeading eyebrow={team.eyebrow} title={team.title} className="max-w-xl" />
 
-      <Reveal className="mt-12 grid items-center gap-10 sm:grid-cols-2 md:mt-16 lg:grid-cols-[1fr_auto_auto_1fr] lg:gap-8">
-        <FounderText founder={left} align="right" className="order-2 sm:order-1 lg:order-none" />
-        <Portrait founder={left} className="order-1 sm:order-2 lg:order-none" />
-        <Portrait founder={right} className="order-3 lg:order-none" />
-        <FounderText founder={right} className="order-4 lg:order-none" />
+      {/* Stacked cards on phones, two columns on tablets, one row with portraits meeting in the middle on desktop. */}
+      <Reveal className="mx-auto mt-12 grid max-w-3xl gap-12 sm:grid-cols-2 sm:gap-8 md:mt-16 lg:flex lg:max-w-none lg:items-center lg:gap-6">
+        <FounderCard founder={left} side="left" />
+        <FounderCard founder={right} side="right" />
       </Reveal>
 
       <p className="mt-20 text-center text-xs uppercase tracking-[0.2em] text-muted-foreground md:mt-28">
@@ -61,22 +60,26 @@ export function Team() {
 
 type Founder = (typeof team.founders)[number]
 
-function Portrait({ founder, className }: { founder: Founder; className?: string }) {
+function FounderCard({ founder, side }: { founder: Founder; side: "left" | "right" }) {
   return (
-    <div className={cn("mx-auto w-full max-w-64 rounded-3xl p-2.5 shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)] lg:w-60", founder.frame, className)}>
-      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-        <Media asset={founder.asset} label={false} className="object-top" sizes="(min-width: 1024px) 240px, 256px" />
+    <div
+      className={cn(
+        "flex flex-col items-center gap-5 text-center lg:flex-1 lg:gap-6",
+        side === "left" ? "lg:flex-row-reverse lg:text-right" : "lg:flex-row lg:text-left"
+      )}
+    >
+      <div className={cn("w-full max-w-64 shrink-0 rounded-3xl p-2.5 shadow-[0_16px_40px_-20px_rgba(0,0,0,0.25)] lg:w-60", founder.frame)}>
+        <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+          <Media asset={founder.asset} label={false} className="object-top" sizes="(min-width: 1024px) 240px, 256px" />
+        </div>
       </div>
-    </div>
-  )
-}
-
-function FounderText({ founder, align = "left", className }: { founder: Founder; align?: "left" | "right"; className?: string }) {
-  return (
-    <div className={cn("text-center sm:text-left", align === "right" && "lg:text-right", className)}>
-      <p className="text-xl font-medium tracking-tight">{founder.name}</p>
-      <p className="text-sm text-muted-foreground">{founder.role}</p>
-      <p className={cn("mx-auto mt-3 max-w-60 text-sm text-muted-foreground sm:mx-0", align === "right" && "lg:ml-auto")}>{founder.bio}</p>
+      <div className="min-w-0 lg:flex-1">
+        <p className="text-xl font-medium tracking-tight">{founder.name}</p>
+        <p className="text-sm text-muted-foreground">{founder.role}</p>
+        <p className={cn("mx-auto mt-3 max-w-64 text-sm text-muted-foreground lg:mx-0", side === "left" && "lg:ml-auto")}>
+          {founder.bio}
+        </p>
+      </div>
     </div>
   )
 }

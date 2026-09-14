@@ -14,8 +14,8 @@ export function Journey() {
   const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
 
   return (
-    <Container as="section" className="grid gap-12 py-20 md:grid-cols-[1fr_1.4fr] md:gap-16 md:py-32">
-      <div className="md:sticky md:top-32 md:self-start">
+    <Container as="section" className="grid gap-12 py-20 md:py-32 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div className="lg:sticky lg:top-32 lg:self-start">
         <SectionHeading eyebrow={journey.eyebrow} title={journey.title} align="left" />
       </div>
       <div ref={ref} className="relative pl-10 md:pl-14">

@@ -3,6 +3,9 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+/* Height-based variants for full-screen (sticky) sections: short laptops / phones, and landscape phones. */
+@custom-variant short (@media (max-height: 760px));
+@custom-variant tiny (@media (max-height: 520px));
 
 @theme inline {
   --color-background: var(--background);

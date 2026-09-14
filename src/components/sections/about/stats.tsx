@@ -9,11 +9,11 @@ import { Reveal } from "@/components/shared/reveal"
 export function Stats() {
   return (
     <Container as="section" className="pb-8">
-      <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border bg-border md:grid-cols-4">
+      <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border bg-border lg:grid-cols-4">
         {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08} className="flex flex-col-reverse justify-end bg-background p-8 md:p-10">
+          <Reveal key={s.label} delay={i * 0.08} className="flex flex-col-reverse justify-end bg-background p-5 sm:p-8 md:p-10">
             <dt className="mt-2 text-sm text-muted-foreground">{s.label}</dt>
-            <dd className="text-4xl font-light tracking-tight tabular-nums md:text-5xl">
+            <dd className="text-3xl font-light tracking-tight tabular-nums sm:text-4xl md:text-5xl">
               {s.prefix}
               <CountUp to={s.value} from={s.plain ? s.value - 24 : 0} />
               {s.suffix}

@@ -36,13 +36,13 @@ export function Header() {
         className={cn(
           "mx-auto flex items-center justify-between border transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
           scrolled
-            ? "h-16 max-w-6xl rounded-full border-white/50 bg-background/65 px-5 shadow-lg shadow-black/5 backdrop-blur-md md:h-[4.5rem] md:px-8"
-            : "h-[4.5rem] max-w-full rounded-none border-transparent bg-background/40 px-5 backdrop-blur-sm md:h-20 md:px-10"
+            ? "h-16 max-w-6xl rounded-full border-white/50 bg-background/65 px-3 sm:px-5 shadow-lg shadow-black/5 backdrop-blur-md md:h-[4.5rem] md:px-8"
+            : "h-[4.5rem] max-w-full rounded-none border-transparent bg-background/40 px-3 sm:px-5 backdrop-blur-sm md:h-20 md:px-10"
         )}
       >
-        <div className="flex items-center gap-12">
+        <div className="flex min-w-0 items-center gap-1 sm:gap-4 lg:gap-12">
           <MobileNav />
-          <Wordmark className="text-2xl md:text-[1.75rem]" />
+          <Wordmark className="text-[1.375rem] sm:text-2xl md:text-[1.75rem]" />
           <nav className="hidden items-center gap-9 lg:flex">
             {mainNav.map((item) => (
               <Link
@@ -56,12 +56,12 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex items-center gap-1.5">
-          <button className="rounded-full p-2.5 hover:bg-foreground/5" aria-label="Search"><SearchIcon className="size-[22px]" /></button>
-          <button className="rounded-full p-2.5 hover:bg-foreground/5" aria-label="Account"><UserIcon className="size-[22px]" /></button>
-          <button className="relative rounded-full p-2.5 hover:bg-foreground/5" aria-label="Cart">
+        <div className="flex shrink-0 items-center sm:gap-1.5">
+          <button className="rounded-full p-2 hover:bg-foreground/5 sm:p-2.5" aria-label="Search"><SearchIcon className="size-[22px]" /></button>
+          <button className="hidden rounded-full p-2.5 hover:bg-foreground/5 min-[360px]:block" aria-label="Account"><UserIcon className="size-[22px]" /></button>
+          <button className="relative rounded-full p-2 hover:bg-foreground/5 sm:p-2.5" aria-label="Cart">
             <ShoppingBagIcon className="size-[22px]" />
-            <span className="absolute right-1 top-1 grid size-[18px] place-items-center rounded-full bg-foreground text-[11px] font-medium text-background">0</span>
+            <span className="absolute right-0.5 top-0.5 grid size-[18px] sm:right-1 sm:top-1 place-items-center rounded-full bg-foreground text-[11px] font-medium text-background">0</span>
           </button>
         </div>
       </div>

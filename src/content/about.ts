@@ -1,7 +1,6 @@
-import type { Asset } from "@/types/content"
-import ayushPortrait from "../../public/assets/ayush.png"
-import dakshPortrait from "../../public/assets/daksh.png"
-// About Us page copy and media. Sourced from aromaiq.in/our-story.
+import { assets } from "@/assets"
+
+// About Us page copy, sourced from aromaiq.in/our-story. Media lives in src/assets/index.ts.
 
 export const manifesto = {
   eyebrow: "The question",
@@ -39,7 +38,8 @@ export const moods = {
   eyebrow: "How it thinks",
   title: "One diffuser. Every mood.",
   body: "Scroll through a day with AromaIQ. Each chamber holds a different oil, and the engine blends them in real time.",
-  chambers: ["Citrus", "Peppermint", "Bergamot", "Deep woods"],
+  // Soft hyphens (\u00AD) give narrow chamber columns clean break points; they're invisible otherwise.
+  chambers: ["Citrus", "Pepper\u00ADmint", "Berga\u00ADmot", "Deep woods"],
   items: [
     { time: "07:00", mood: "Morning", body: "Bright citrus to wake the room up.", mix: [80, 15, 5, 0], color: "#ffc27a", waves: { horizon: "#ff7a2f", wave: "#ffc27a", crest: "#fff4e0" } },
     { time: "14:00", mood: "Focus", body: "Cool peppermint for long stretches of deep work.", mix: [15, 70, 15, 0], color: "#9fd8c4", waves: { horizon: "#1f8a7a", wave: "#9fd8c4", crest: "#f0fff9" } },
@@ -61,17 +61,17 @@ export const values = {
     {
       title: "Personal diffusers",
       body: "For bedrooms, studios and homes — a diffuser that learns the people who live with it.",
-      asset: { src: null, alt: "At home", tone: "from-[#eee6da] to-[#c2ab8c]" } as Asset,
+      asset: assets.about.valuePersonal,
     },
     {
       title: "Commercial spaces",
       body: "Units for cafés and restaurants, so every guest walks into a room that feels intentional.",
-      asset: { src: null, alt: "Cafés & restaurants", tone: "from-[#e3ebe2] to-[#8fa58b]" } as Asset,
+      asset: assets.about.valueCommercial,
     },
     {
       title: "Scent subscriptions",
       body: "Fresh essential oils delivered on a schedule, matched to how you actually use your diffuser.",
-      asset: { src: null, alt: "Subscriptions", tone: "from-[#ecdfe4] to-[#b08494]" } as Asset,
+      asset: assets.about.valueSubscription,
     },
   ],
 }
@@ -85,25 +85,25 @@ export const team = {
       role: "Co-founder & CEO",
       bio: "Visionary leader driving innovation in smart wellness technology.",
       frame: "bg-gradient-to-br from-[#e6cfa4] to-[#b99467]",
-      asset: { src: ayushPortrait, alt: "Portrait of Ayush Raj", tone: "from-[#efe6dc] to-[#bfa68a]" } as Asset,
+      asset: assets.about.founderAyush,
     },
     {
       name: "Daksh Sharma",
       role: "Co-founder & CTO",
       bio: "Technical mastermind crafting intelligent aroma experiences.",
       frame: "bg-gradient-to-br from-[#dce4ec] to-[#a6b6c6]",
-      asset: { src: dakshPortrait, alt: "Portrait of Daksh Sharma", tone: "from-[#e4e8ec] to-[#93a3b1]" } as Asset,
+      asset: assets.about.founderDaksh,
     },
   ],
   galleryEyebrow: "Obsessed in action",
   gallery: [
-    { label: "Planning on board", asset: { src: null, alt: "Planning on the whiteboard", tone: "from-[#f1e4d6] to-[#c9a27e]" } as Asset },
-    { label: "Talking to customers", asset: { src: null, alt: "Talking to customers", tone: "from-[#e3ebe2] to-[#8fa58b]" } as Asset },
-    { label: "Expo showcase", asset: { src: null, alt: "Showcasing at an expo", tone: "from-[#e4e8ec] to-[#93a3b1]" } as Asset },
-    { label: "Late-night strategy", asset: { src: null, alt: "Founders in discussion", tone: "from-[#ecdfe4] to-[#b08494]" } as Asset },
-    { label: "Writing the engine", asset: { src: null, alt: "Code for the mood engine", tone: "from-[#e6e3ec] to-[#9b93b3]" } as Asset },
-    { label: "Mentor sessions", asset: { src: null, alt: "Meeting with a mentor", tone: "from-[#efe6dc] to-[#bfa68a]" } as Asset },
-    { label: "Building the team", asset: { src: null, alt: "Team huddle", tone: "from-[#e3ebe2] to-[#8fa58b]" } as Asset },
+    { label: "Planning on board", asset: assets.about.galleryPlanning },
+    { label: "Talking to customers", asset: assets.about.galleryCustomers },
+    { label: "Expo showcase", asset: assets.about.galleryExpo },
+    { label: "Late-night strategy", asset: assets.about.galleryStrategy },
+    { label: "Writing the engine", asset: assets.about.galleryEngine },
+    { label: "Mentor sessions", asset: assets.about.galleryMentor },
+    { label: "Building the team", asset: assets.about.galleryTeam },
   ],
 }
 
