@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { ChatWidget } from "@/components/chat/chat-widget"
 
 // Shared chrome for all marketing pages. Pages render full-bleed under the fixed header.
 export default function SiteLayout({ children }: LayoutProps<"/">) {
@@ -8,6 +9,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <ChatWidget />
     </>
   )
 }
