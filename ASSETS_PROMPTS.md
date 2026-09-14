@@ -6,7 +6,7 @@ Every image, video and logo slot on the site, grouped by page and section, with 
 - **Video:** Runway Gen-4, Kling, Google Veo, Luma.
 - Every code block is standalone: house style and product description are already included. Click copy and paste.
 
-All media is registered in `src/assets/index.ts`. See `src/assets/README.md` for how to wire files in.
+All media is registered in `src/assets/index.ts`. Save a file under the name listed for its slot and it appears on the site automatically. See `src/assets/README.md`.
 
 ---
 
@@ -358,4 +358,4 @@ A diverse group of young Indian team members stacking hands in the centre of a h
    ```
 
 3. **Save** images to `src/assets/<page>/` using the file name listed for each slot.
-4. **Wire up** in `src/assets/index.ts`: import the file, set it as the slot's `src`, and rewrite `alt` to describe the final image.
+4. **That's it:** the image shows up automatically. Then rewrite the slot's `alt` in `src/assets/index.ts` to describe the final image.

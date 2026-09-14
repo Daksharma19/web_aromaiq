@@ -38,7 +38,7 @@ export default function AboutPage() {
   return (
     <>
       <JsonLd data={jsonLd} />
-      <h1 className="sr-only">{`${title} — ${siteConfig.name}`}</h1>
+      <h1 className="sr-only">{`${title} | ${siteConfig.name}`}</h1>
       <Manifesto />
       <Journey />
       <Team />

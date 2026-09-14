@@ -1,4 +1,6 @@
 import type { NextConfig } from "next";
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
+import { generateAssets, watchAssets } from "./scripts/generate-assets.mjs";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -29,4 +31,12 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default function config(phase: string): NextConfig {
+  // Register every image in src/assets/<page>/ so dropped-in files show up without code changes.
+  generateAssets();
+  if (phase === PHASE_DEVELOPMENT_SERVER && !process.env.__ASSETS_WATCHING) {
+    process.env.__ASSETS_WATCHING = "1"; // the config can load more than once per dev server
+    watchAssets();
+  }
+  return nextConfig;
+}

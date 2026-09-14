@@ -4,35 +4,25 @@ All site media is registered in **`src/assets/index.ts`**. Content files (`src/c
 
 ```
 src/assets/
-  index.ts          ← the manifest: one line per image slot
-  home/             ← images for the home page
-  about/            ← images for the About page
-public/videos/      ← videos (served as-is, streamed by the browser)
+  index.ts             ← the manifest: one line per slot, pointing at a file name with img("page/name")
+  files.generated.ts   ← auto-generated list of every image in the folders below (don't edit)
+  home/                ← images for the home page
+  about/               ← images for the About page
+public/videos/         ← videos (served as-is, streamed by the browser)
 ```
 
-## Replace an image
+## Add, replace or remove an image
 
-Overwrite the file with the same name, e.g. drop a new `src/assets/about/founder-ayush.png` in place.
-You don't need to change any code. Static imports are content-hashed, so browsers and the image cache pick up the new file automatically.
+**Just drop the file in with the name from `ASSETS_PROMPTS.md`**, e.g. `src/assets/home/step-app.jpg`. No code change needed.
 
-If the new file has a different extension (`.png` → `.jpg`), update its `import` line in `index.ts`.
+- The extension doesn't matter: `step-app.jpg`, `.png` or `.webp` all fill `img("home/step-app")`.
+- While `npm run dev` is running, the file list regenerates on its own and the page updates. It's also regenerated on every `next dev` / `next build` start, or manually with `npm run assets`.
+- Delete the file and the gradient placeholder (`tone`) comes back.
+- Replacing a file under the same name also works: imports are content-hashed, so caches pick up the new version.
 
-## Fill a placeholder
+After the image is in, update the slot's `alt` in `index.ts` to describe it. It's used by screen readers and search engines.
 
-1. Save the file in the page folder, e.g. `src/assets/home/promo-seasonal.jpg`
-2. In `index.ts`, import it and set it as the slot's `src`:
-
-   ```ts
-   import promoSeasonal from "./home/promo-seasonal.jpg"
-   // …
-   promoSeasonal: { src: promoSeasonal, alt: "Amber candle and cedar diffuser on a stone table", tone: "…" },
-   ```
-
-Write a real `alt`. It's used by screen readers and search engines.
-
-## Remove an image
-
-Set the slot's `src` back to `null` and delete its import. The gradient placeholder (`tone`) comes back.
+To add a brand-new slot, add a line in `index.ts` with `src: img("page/new-name")` and use `assets.page.newSlot` in the content file.
 
 ## Videos
 

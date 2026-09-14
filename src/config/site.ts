@@ -96,7 +96,6 @@ export const legalNav: LinkItem[] = [
 ]
 
 export const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "TikTok", href: "#" },
-  { label: "Facebook", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/aromaiqscents/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/aromaiq-scents-6488bb35b/" },
 ] as const

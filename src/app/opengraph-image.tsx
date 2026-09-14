@@ -3,7 +3,7 @@ import { ogSize, renderOgImage } from "@/lib/og-image"
 
 // Default social share card (Open Graph + Twitter).
 
-export const alt = `${siteConfig.name} — ${siteConfig.tagline}`
+export const alt = `${siteConfig.name} | ${siteConfig.tagline}`
 export const size = ogSize
 export const contentType = "image/png"
 

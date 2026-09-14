@@ -5,7 +5,7 @@ import { absoluteUrl, siteConfig } from "@/config/site"
 import { graph, organizationId, organizationSchema, websiteId, websiteSchema } from "@/lib/structured-data"
 import {
   Benefits,
-  Brands,
+  // Brands,
   Diffusers,
   Hero,
   PromoBlocks,
@@ -24,7 +24,7 @@ const jsonLd = graph(
     "@type": "WebPage",
     "@id": absoluteUrl("/#webpage"),
     url: absoluteUrl("/"),
-    name: `${siteConfig.name} — ${siteConfig.tagline}`,
+    name: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
     isPartOf: { "@id": websiteId },
     about: { "@id": organizationId },
@@ -44,7 +44,8 @@ export default function HomePage() {
         <Diffusers />
         <Steps />
       </GrainGradient>
-      <Brands />
+      {/* Temporarily hidden until partner brands are confirmed. Restore by uncommenting. */}
+      {/* <Brands /> */}
     </>
   )
 }

@@ -52,6 +52,8 @@ function StackCard({
       >
         <Media
           asset={block.asset}
+          // Card width: the Container (max 1440px) minus its gutters.
+          sizes="(min-width: 1440px) 1376px, (min-width: 768px) calc(100vw - 4rem), calc(100vw - 2rem)"
           className="-z-10 transition-transform duration-[1.2s] ease-out group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/45 to-transparent" />

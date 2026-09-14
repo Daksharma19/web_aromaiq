@@ -8,9 +8,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const socialIcons: Record<(typeof socialLinks)[number]["label"], string> = {
   Instagram:
     "M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4ZM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM12 2c-2.7 0-3 0-4.1.1C4.3 2.3 2.3 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.2 3.6 2.2 5.6 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.2 5.6-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.2-3.6-2.2-5.6-5.8-5.8C15 2 14.7 2 12 2Z",
-  TikTok:
-    "M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.7a5.7 5.7 0 1 0 4.9 5.7V9a7.3 7.3 0 0 0 4.3 1.4V7.3a4.3 4.3 0 0 1-3.2-1.5Z",
-  Facebook: "M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8Z",
+  LinkedIn:
+    "M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z",
 }
 
 export function Footer() {
@@ -57,17 +56,19 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-6 border-t border-background/20 pt-8 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-3">
+          {/* <div className="flex items-center gap-3">
             {["App Store", "Google Play"].map((s) => (
               <a key={s} href="#" className="rounded-lg border border-background/30 px-4 py-2 text-xs hover:bg-background/10">{s}</a>
             ))}
-          </div>
+          </div> */}
           <div className="flex gap-2">
             {socialLinks.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
-                aria-label={s.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${s.label} (opens in a new tab)`}
                 className="grid size-9 place-items-center rounded-full border border-background/20 transition-colors hover:bg-background hover:text-foreground"
               >
                 <svg viewBox="0 0 24 24" className="size-4" fill="currentColor" aria-hidden><path d={socialIcons[s.label]} /></svg>
